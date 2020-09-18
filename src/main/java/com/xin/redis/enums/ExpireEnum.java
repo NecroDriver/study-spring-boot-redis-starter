@@ -17,11 +17,11 @@ public enum ExpireEnum {
     /**
      * 过期时间
      */
-    private Long time;
+    private final Long time;
     /**
      * 时间单位
      */
-    private TimeUnit timeUnit;
+    private final TimeUnit timeUnit;
 
     /**
      * 构造方法

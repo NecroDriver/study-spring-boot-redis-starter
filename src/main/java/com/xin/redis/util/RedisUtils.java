@@ -60,7 +60,7 @@ public class RedisUtils {
      * @param key 键
      * @return 时间（秒）返回0表示永久有效
      */
-    public long getExpire(String key) {
+    public Long getExpire(String key) {
         return redisTemplate.getExpire(key, TimeUnit.SECONDS);
     }
 
@@ -70,7 +70,7 @@ public class RedisUtils {
      * @param key 键
      * @return 结果
      */
-    public boolean hasKey(String key) {
+    public Boolean hasKey(String key) {
         try {
             return redisTemplate.hasKey(key);
         } catch (Exception e) {
@@ -94,7 +94,7 @@ public class RedisUtils {
         }
     }
 
-    //=========String封账方法============
+    //=========String封装方法============
 
     /**
      * 普通缓存获取
@@ -152,7 +152,7 @@ public class RedisUtils {
      * @param num 递增数量（大于0）
      * @return 结果
      */
-    public long incr(String key, long num) {
+    public Long incr(String key, long num) {
         Assert.isTrue(num > 0, "递增因子必须大于0！");
         return redisTemplate.opsForValue().increment(key, num);
     }
@@ -164,7 +164,7 @@ public class RedisUtils {
      * @param num 递减数量（小于0）
      * @return 结果
      */
-    public long decr(String key, long num) {
+    public Long decr(String key, long num) {
         Assert.isTrue(num < 0, "递减因子必须小于0！");
         return redisTemplate.opsForValue().decrement(key, num);
     }
@@ -339,7 +339,7 @@ public class RedisUtils {
      * @param value 值
      * @return true 存在 false不存在
      */
-    public boolean sHasKey(String key, Object value) {
+    public Boolean sHasKey(String key, Object value) {
         try {
             return redisTemplate.opsForSet().isMember(key, value);
         } catch (Exception e) {
